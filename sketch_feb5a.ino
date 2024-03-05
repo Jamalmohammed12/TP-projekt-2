@@ -1,3 +1,14 @@
+/*
+ Namn :Jamal_Mohammed 
+ Klass:2B 
+ Projekt: Handrörelse förståelses system 
+ Beskrivning: Mitt projekt ska med hjälp av sensorer och dess värden ge mig olika 
+
+
+*/
+
+
+
 #include <Wire.h>
 #include <U8glib.h>
 
@@ -24,17 +35,17 @@ void loop() {
   Serial.println(String(value1) + " " + String(value2)); // Print values to serial monitor
 
   if (value1 >= 450) {
-    UpdateOled("BEHÖVER VATTEN", x, y); // Display "BEHÖVER VATTEN" on OLED display
+    TextToScreen("BEHÖVER VATTEN", x, y); // Display "BEHÖVER VATTEN" on OLED display
   } else if (value2 >= 500 ) {
-    UpdateOled("BEHOVER MAT", x, y); // Display "Ingen input" on OLED display
+    TextToScreen("BEHOVER MAT", x, y); // Display "Ingen input" on OLED display
   }  else {
-    UpdateOled("Behover inget tack", x, y);
+    TextToScreen("Behover inget tack", x, y);
   }
 
   delay(500); // Delay for stability, adjust as needed
 }
 
-void UpdateOled(String text, int posx, int posy) {
+void TextToScreen(String text, int posx, int posy) {
   oled.firstPage();
   do {
     oled.drawStr(0, 20, text.c_str()); // Draw text on OLED display at specified position
